@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Adeprimo Task{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Adeprimo Back End Task</h1>
+
+                <form method="get" style="margin-bottom: 20px;">
+                    <div class="form-group">
+                        <p>From Date & Time</p>
+                        <div class="input-group date" id="from" style="max-width: 250px; margin-bottom: 15px;">
+                            <input name="from" type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                        <p>To Date & Time</p>
+                        <div class="input-group date mb-3" id="to" style="max-width: 250px; margin-bottom: 15px;">
+                            <input name="to" type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+                <h1 style="margin-bottom: 20px;">
+                    {% if from %}
+                        <span style="display:block;">
+                            From {{ from }}
+                        </span>
+                    {% endif %}
+                    {% if to %}
+                        <span style="display:block;">
+                            Till {{ to }}
+                        </span>
+                    {% endif %}
+                </h1>
+
+                {% if total_income != 0 %}
+                    <div class="total-income">
+                        <b>Total Income:</b> {{ total_income }} SEK
+                    </div>
+                {% endif %}
+
+                <table id="parking">
+                    <thead>
+                        <tr>
+                            <th>Registration Number</th>
+                            <th>Vehicle Type</th>
+                            <th>Parking Started</th>
+                            <th>Parking Ended</th>
+                            <th>Parking Spot Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in parking_tickets %}
+                            <tr>
+                                <td>{{ ticket.registration_number }}</td>
+                                <td>{{ ticket.vehicle_type }}</td>
+                                <td>{{ ticket.created_at }}</td>
+                                <td>{{ ticket.paid_at }}</td>
+                                <td>{{ ticket.number }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#from').datetimepicker({
+                format: 'YYYY-MM-DD LT'
+            });
+            $('#to').datetimepicker({
+                format: 'YYYY-MM-DD LT'
+            });
+        });
+    </script>
+
+{% endblock %}
