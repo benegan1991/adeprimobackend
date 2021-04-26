@@ -8,19 +8,20 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>Adeprimo Back End Task</h1>
+                <p>Please select a "From" and "To" date below and then click submit.</p>
 
-                <form method="get" style="margin-bottom: 20px;">
+                <form method="get" style="margin: 20px 0;">
                     <div class="form-group">
-                        <p>From Date & Time</p>
+                        <p><b>From Date & Time</b></p>
                         <div class="input-group date" id="from" style="max-width: 250px; margin-bottom: 15px;">
-                            <input name="from" type="text" class="form-control" />
+                            <input name="from" type="text" class="form-control" required />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
-                        <p>To Date & Time</p>
+                        <p><b>To Date & Time</b></p>
                         <div class="input-group date mb-3" id="to" style="max-width: 250px; margin-bottom: 15px;">
-                            <input name="to" type="text" class="form-control" />
+                            <input name="to" type="text" class="form-control" required />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
